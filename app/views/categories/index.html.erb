@@ -1,10 +1,37 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Journal App</h1>
 
-<%= link_to 'Add a Category', new_category_path %>
+<div class="flex justify-center">
+  <h1 class="text-3xl">Journal App</h1>
+</div>
+<div class="flex justify-end mt-8 pr-32 mb-10">
+  <%= link_to 'Add a Category', new_category_path, class: "btn btn-primary" %>
+</div>
 
-<table>
+<div class="grid grid-cols-3 gap-4 justify-items-center px-32 place-content-evenly">
+  <% @categories.each do |category| %>
+    <div> 
+      <div class=" p-12 items-start rounded-r-lg bg-yellow-200 py-6">
+          <div class="text-lg font-bold"><%= category.name %></div>
+          <div><%= category.description %></div>
+
+          <div class="pt-5">
+              <%= link_to 'Show', category, class: "btn btn-secondary" %>
+              <%= link_to 'Edit', edit_category_path(category), class: "btn btn-secondary" %>
+              <%= link_to 'Destroy', category, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-secondary" %>
+          </div>
+    
+          
+      </div>
+       
+    </div>
+    
+  <% end %>
+</div>
+
+<%
+=begin%>
+ <table class="flex flex-col mx-28 border-2 border-black">
   <thead>
     <tr>
       <th>Name</th>
@@ -19,15 +46,20 @@
       <tr>
         <td><%= category.name %></td>
         <td><%= category.description %></td>
-        <td><%= category.user_id %></td>
         <td><%= link_to 'Show', category %></td>
         <td><%= link_to 'Edit', edit_category_path(category) %></td>
         <td><%= link_to 'Destroy', category, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
-</table>
+</table> 
+<%
+=end%>
 
 <br>
 
-
+<%
+=begin%>
+ <td><%= category.user_id %></td> 
+<%
+=end%>

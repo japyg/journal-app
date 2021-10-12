@@ -1,32 +1,23 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @category.name %>
-</p>
 
-<p>
-  <strong>Description:</strong>
-  <%= @category.description %>
-</p>
+<div class="flex border-2 border-blue-100 justify-evenly items-center">
+  
+  <div class="">
+    <div class="font-bold text-2xl">
+      
+      <%= @category.name%>
+    </div>
+      <%= link_to 'Edit', edit_category_path(@category) %> |
+      <%= link_to 'Back', categories_path %>
+  </div>
+  <div class="">
+    <%= render 'tasks/form' %>
+  </div>  
+</div>
 
-<p>
-  <strong>User:</strong>
-  <%= @category.user_id %>
-</p>
 
-<%= link_to 'Edit', edit_category_path(@category) %> |
-<%= link_to 'Back', categories_path %>
-
-<hr>
-
-<h1>New task</h1>
-
-<%= render 'tasks/form' %>
-
-<hr>
-
-<h1>Listing tasks</h1>
+<h1>List of tasks</h1>
 
 <table>
   <tr>

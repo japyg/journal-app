@@ -11,20 +11,23 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
-  </div>
-  <div class="field">
-    <%= f.label :description %><br />
-    <%= f.text_area :description %>
-  </div>
-  <div class="field">
-    <%= f.label :status %><br />
-    <%= f.select :status, Task::STATUS_OPTIONS %>
-  </div>
-  
-  <div class="actions">
-    <%= f.submit %>
+  <div class="border-2 border-black flex flex-col p-4 rounded-lg">
+      <div class="flex justify-center font-bold text-lg pb-2">Add a task</div>
+      <div class="flex justify-evenly items-start pb-2">
+        <%= f.label :task_name, class:""%>:
+        <%= f.text_field :task_name, class:"border-b-2 focus:outline-none focus:ring ml-4" %>
+      </div>
+      <div class="flex flex-col justify-evenly items-start pb-2">
+        <%= f.label :task_details, "Task details:" %>
+        <%= f.text_area :task_details, class:"pr-24 focus:outline-none focus:ring border-2 border-opacity-75" %>
+      </div>
+      <div class="flex justify-between pt-2">
+        <%= f.label :status, "Status:" %>
+        <%= f.select :status, Task::STATUS_OPTIONS %>
+      </div>
+      
+      <div class="flex justify-center pt-4">
+        <%= f.submit class: "btn btn-success" %>
+      </div>
   </div>
 <% end %>
