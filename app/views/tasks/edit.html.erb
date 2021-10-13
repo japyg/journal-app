@@ -1,6 +1,8 @@
-<h1>Editing task</h1>
+<div>
+    <%= link_to 'Back', category_tasks_path(@task.category), class: "btn btn-secondary" %>
+</div>
 
 <%= render 'form' %>
 
-<%= link_to 'Show', [@task.category, @task] %> |
-<%= link_to 'Back', category_tasks_path(@task.category) %>
+
+

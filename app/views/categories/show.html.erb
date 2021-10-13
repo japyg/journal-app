@@ -1,6 +1,3 @@
-<p id="notice"><%= notice %></p>
-
-
 <div class="flex border-2 border-blue-100 justify-evenly items-center">
   
   <div class="">
@@ -11,41 +8,85 @@
       <%= link_to 'Edit', edit_category_path(@category) %> |
       <%= link_to 'Back', categories_path %>
   </div>
-  <div class="">
-    <%= render 'tasks/form' %>
-  </div>  
+  
+  <div>
+      <%= form_with(model: [@task.category, @task]) do |f| %>
+        <% if @task.errors.any? %>
+          <div id="error_explanation">
+            <h2><%= pluralize(@task.errors.count, "error") %> prohibited this task from being saved:</h2>
+
+            <ul>
+            <% @task.errors.full_messages.each do |msg| %>
+              <li><%= msg %></li>
+            <% end %>
+            </ul>
+          </div>
+        <% end %>
+
+      <div class="border-2 border-black flex flex-col p-2 rounded-lg">
+          <div class="flex justify-center font-bold text-lg pb-2">Add a task</div>
+          <div class="flex justify-evenly items-start pb-2">
+            <%= f.label :name, "Task Name", class:""%>:
+            <%= f.text_field :name, class:"border-b-2 focus:outline-none focus:ring ml-4" %>
+          </div>
+          <div class="flex justify-between pt-2">
+            <%= f.label :status, "Status:" %>
+            <%= f.select :status, Task::STATUS_OPTIONS %>
+          </div>
+          
+          <div class="flex justify-center pt-4">
+            <%= f.submit class: "btn btn-success" %>
+          </div>
+      </div>
+      <% end %>
+
+    </div>  
+  </div>
+
+<div class="flex justify-start mt-4 ml-32 font-bold text-lg">
+  <h1>Tasks</h1>
+</div>
+
+<div class="grid grid-cols-2 gap-3 mx-32 pt-2">
+  <% @category.tasks.each do |task| %>
+  <% if task.persisted? %>
+  <div class="border-2 border-blue-100 mt-2 pt-2 pl-3">
+      <div class="flex">
+        <div class="p-1 text-s">
+          <span class="badge badge-<%= task.badge_color %> p-1"><%= task.status %></span>
+        </div>
+      </div>
+      <div class="flex justify-between">
+        <div class="text-lg font-bold pb-3 pt-2"> 
+          <%= task.name %>
+        </div>
+        <div class="mr-5">
+         
+        </div>
+      </div>
+      <div class="flex pb-3">
+        <div>
+           <%= link_to 'Details', [task.category, task], class:"btn btn-secondary p-1" %>
+          <%= link_to 'Edit', edit_category_task_path(task.category, task), class:"btn btn-secondary p-1" %>
+          <%= link_to 'Delete', [task.category, task], method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-danger p-1" %> 
+          <%
+=begin%>
+ <%= task.description %> 
+<%
+=end%>
+        </div>
+        <div>
+          
+        </div>  
+      </div>
+   </div>   
+  <% end %>
+<% end %>
 </div>
 
 
-<h1>List of tasks</h1>
 
-<table>
-  <tr>
-    <th>Name</th>
-    <th>Description</th>
-    <th>Status</th>
-    <th>Category</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
 
-<% @category.tasks.each do |task| %>
-  <% if task.persisted? %>
-    <tr>
-      <td><%= task.name %></td>
-      <td><%= task.description %></td>
-      <td><%= task.status %></td>
-      <td><%= task.category %></td>
-      <td><%= link_to 'Show', [task.category, task] %></td>
-      <td><%= link_to 'Edit', edit_category_task_path(task.category, task) %></td>
-      <td><%= link_to 'Destroy', [task.category, task], method: :delete, data: { confirm: 'Are you sure?' } %></td>
-    </tr>
-  <% end %>
-<% end %>
-</table>
 
-<br />
 
-<%= link_to 'New Task', new_category_task_path(@category.id) %>
 

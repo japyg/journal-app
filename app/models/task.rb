@@ -1,12 +1,22 @@
 class Task < ApplicationRecord
   belongs_to :category
 
-  validates :status, inclusion: { in: ['Not started', 'In progress', 'Done'] }
+  validates :status, inclusion: { in: ['not-started', 'in-progress', 'done'] }
 
   STATUS_OPTIONS = [
-    ['Not started', 'Not started'],
-    ['In progress', 'In progress'],
-    ['Done', 'Done']
-  
+    ['Not started', 'not-started'],
+    ['In progress', 'in-progress'],
+    ['Done', 'done']
   ]
+
+  def badge_color
+    case status
+    when 'not-started'
+      'dark'
+    when 'in-progress'
+      'warning'
+    when 'done'
+      'success'
+    end
+  end
 end
