@@ -1,17 +1,17 @@
-<p id="notice"><%= notice %></p>
+<%
+=begin%>
+ <p id="notice"><%= notice %></p> 
+<%
+=end%>
 
-
-<div class="flex justify-center">
-  <h1 class="text-3xl">Journal App</h1>
-</div>
-<div class="flex justify-end mt-8 pr-32 mb-10">
+<div class="flex justify-end mt-8 pr-32 mb-6">
   <%= link_to 'Add a Category', new_category_path, class: "btn btn-primary" %>
 </div>
 
-<div class="grid grid-cols-3 gap-4 justify-items-center px-32 place-content-evenly">
+<div class="grid grid-cols-3 gap-3 justify-items-center mx-20 py-6 px-6 rounded-lg shadow-2xl" style="background-color:#3A4454;">
   <% @categories.each do |category| %>
     <div> 
-      <div class=" p-12 items-start rounded-r border-2 py-6">
+      <div class="rounded-lg shadow-md py-8 px-16" style="background-color:#FBFFF1;">
           <span class="badge badge-<%= category.badge_color %>">
             <%= category.status %>
           </span>
@@ -24,10 +24,10 @@
           <div class="text-lg font-bold pt-3"><%= category.name %></div>
           <div class="text-xs"><%= category.description %></div>
 
-          <div class="pt-5">
-              <%= link_to 'Show', category, class: "btn btn-secondary" %>
-              <%= link_to 'Edit', edit_category_path(category), class: "btn btn-secondary" %>
-              <%= link_to 'Destroy', category, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-secondary" %>
+          <div class="pt-4">
+              <%= link_to 'Show', category, class: "btn btn-secondary p-1 mr-2" %>
+              <%= link_to 'Edit', edit_category_path(category), class: "btn btn-secondary p-1 mr-2" %>
+              <%= link_to 'Destroy', category, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-secondary p-1" %>
           </div>
     
           

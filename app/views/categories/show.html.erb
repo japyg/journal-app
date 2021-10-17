@@ -1,12 +1,14 @@
 <div class="">
       <%= link_to 'Back', categories_path, class: "btn btn-secondary" %>
-      <%= link_to 'Edit', edit_category_path(@category), class:"btn btn-secondary" %> 
+      
 </div>
 
-<div class="flex border-2 border-blue-100 justify-evenly items-center">
+<div class="flex shadow-md justify-between items-end mx-32 pb-3 px-4">
     
-      <div class="font-bold text-2xl">
-        <%= @category.name%>
+    
+      <div class="font-bold text-2xl flex flex-col items-center">
+        <div class="pb-5 pl-2"><%= @category.name%></div>
+        <%= link_to 'Edit', edit_category_path(@category), class:"btn btn-info p3" %> 
       </div>
     
   <div>
@@ -23,11 +25,11 @@
           </div>
         <% end %>
 
-      <div class="border-2 border-black flex flex-col p-2 rounded-lg">
+      <div class="border-2 border-black flex flex-col p-2 rounded-lg bg-yellow-100">
           <div class="flex justify-center font-bold text-lg pb-2">Add a task</div>
           <div class="flex justify-evenly items-start pb-2">
             <%= f.label :name, "Task Name", class:""%>:
-            <%= f.text_field :name, class:"border-b-2 focus:outline-none focus:ring ml-4" %>
+            <%= f.text_field :name, class:"border-b-2 focus:outline-none ml-4" %>
           </div>
           <div class="flex items-center pt-2 form-group">
             <%= f.label :status, "Status:", class:"mr-14" %>

@@ -1,29 +1,37 @@
-<h2>Sign up</h2>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
+<div class="rounded-lg shadow-2xl mx-60" style="background-color: #B3BFB8;">
+  <h2 class="flex justify-center text-4xl pt-4 font-serif text-gray-600">Create an Account</h2>
 
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-  </div>
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+    <%= render "devise/shared/error_messages", resource: resource %>
 
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
+    <div class="flex flex-col">
+      <div class="flex justify-center"> 
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: 'Email', class:'form-control w-2/4 mb-4 mt-5' %>
+      </div>
+    </div>
 
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
-<% end %>
+    <div class="flex justify-center">
+      
+      <%= f.password_field :password, autocomplete: "new-password",
+         placeholder: "Password (6 characters minimum)", class:'form-control w-2/4 mb-4'%>
+    </div>
 
-<%= render "devise/shared/links" %>
+    <div class="flex justify-center">
+     
+      <%= f.password_field :password_confirmation, autocomplete: "new-password", placeholder: 'Password Confirmation', class:'form-control w-2/4 mb-4' %>
+    </div>
+
+    <div class="flex justify-center">
+      <%= f.submit "Create Account", class: 'btn btn-dark' %>
+    </div>
+  <% end %>
+
+  <div class="flex justify-center mt-4">Already have an account?</div>
+  <div class="flex justify-center">
+        
+        <%= link_to "Sign in", new_session_path(resource_name), class:'btn btn-warning mt-2 mb-3' %>
+        
+      </div>
+</div>
