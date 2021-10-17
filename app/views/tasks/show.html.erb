@@ -1,6 +1,38 @@
+
+<%= link_to 'Back', @category, class: "btn btn-secondary"%>
+
 <p id="notice"><%= notice %></p>
 
-<p>
+<div class="border-2 border-black flex flex-col p-4 rounded-lg mx-72 mt-4">
+    <div class="flex justify-center items-start font-bold text-lg pb-2">Edit this task</div>
+    <div class="flex items-center pb-2">
+      <h1 class="pr-1">Task Name:</h1>
+      <div class="border-b-2 focus:outline-none focus:ring ml-3 w-4/6" >
+        <%= @task.name %>
+      </div>
+    </div>
+
+    <div class="flex flex-col pb-2">
+      <h1 class="pb-2 pt-2">Task Details:<h1/>
+      <div class="p-2 focus:outline-none border-2 border-opacity-75 w-5/6 h-32"> 
+        <%= @task.description %>
+      </div>
+    </div>  
+
+    <div class="flex items-center pt-4">
+      <h1 class="pr-2">Status:<h1/>
+      <span class="badge badge-<%= @task.badge_color %> p-1"><%= @task.status %></span>
+    </div>
+    <div class="flex justify-center pt-4">
+      <%= link_to 'Edit', edit_category_task_path(@task.category, @task), class: "btn btn-secondary" %> 
+    </div>
+     
+</div>
+
+
+<%
+=begin%>
+ <p>
   <b>Name:</b>
   <%= @task.name %>
 </p>
@@ -20,6 +52,6 @@
   <%= @task.category %>
 </p>
 
-
-<%= link_to 'Edit', edit_category_task_path(@task.category, @task) %> |
-<%= link_to 'Back', category_tasks_path(@task.category) %>
+ 
+<%
+=end%>

@@ -17,13 +17,13 @@
         <%= f.label :name, "Task Name:", class:"pr-1"%>
         <%= f.text_field :name, class:"border-b-2 focus:outline-none focus:ring ml-3 w-4/6" %>
       </div>
-      <div class="flex flex-col justify-evenly items-start pb-2">
-        <%= f.label :description, "Task details:" %>
-        <%= f.text_area :description, class:"pr-48 focus:outline-none focus:ring border-2 border-opacity-75 h-32 w-5/6" %>
+      <div class="flex flex-col justify-evenly">
+        <%= f.label :description, "Task Details:" %>
+        <%= f.text_area :description, class:"p-2 focus:outline-none border-2 border-opacity-75 w-5/6 h-32" %>
       </div>
-      <div class="flex items-center pt-4">
+      <div class="flex items-center pt-4 form-group">
         <%= f.label :status, "Status:", class: "pr-4" %>
-        <%= f.select :status, Task::STATUS_OPTIONS %>
+        <%= f.select :status, Task::STATUS_OPTIONS, {}, class:" w-32 form-control" %>
       </div>
       
       <div class="flex justify-center pt-4">
