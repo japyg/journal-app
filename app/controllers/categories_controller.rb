@@ -7,6 +7,7 @@ class CategoriesController < ApplicationController
     @categories = current_user.categories
   end
 
+
   # GET /categories/1 or /categories/1.json
   def show
     @task = @category.tasks.build

@@ -1,6 +1,8 @@
 class Task < ApplicationRecord
   belongs_to :category
 
+  validates :name, presence: true
+  
   validates :status, inclusion: { in: ['not-started', 'in-progress', 'done'] }
 
   STATUS_OPTIONS = [

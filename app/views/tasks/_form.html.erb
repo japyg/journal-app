@@ -25,6 +25,11 @@
         <%= f.label :status, "Status:", class: "pr-4" %>
         <%= f.select :status, Task::STATUS_OPTIONS, {}, class:" w-32 form-control" %>
       </div>
+
+      <div class="flex items-center pt-4 form-group">
+        <%= f.label :date, "Due Date:", class: "pr-4" %>
+        <%= f.date_field :date, class:" w-44 form-control" %>
+      </div>
       
       <div class="flex justify-center pt-4">
         <%= f.submit class: "btn btn-warning" %>

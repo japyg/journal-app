@@ -4,9 +4,13 @@
 <%
 =end%>
 
-<div class="flex justify-end mt-8 pr-32 mb-6">
+<div class="flex justify-start pl-20 mt-8 mb-6">
   <%= link_to 'Add a Category', new_category_path, class: "btn btn-primary" %>
+  
+
 </div>
+
+
 
 <div class="grid grid-cols-3 gap-3 justify-items-center mx-20 py-6 px-6 rounded-lg shadow-2xl" style="background-color:#3A4454;">
   <% @categories.each do |category| %>

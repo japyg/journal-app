@@ -7,6 +7,9 @@
       <ul class="flex">  
         <% if user_signed_in? %>
             <li>
+              <%= link_to "Tasks Today", class:"text-white pr-7" %>
+            </li>
+            <li>
               <%= link_to "Edit Account", edit_user_registration_path, class:'text-white pr-4'%>
             </li>
             <li>

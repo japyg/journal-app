@@ -10,6 +10,7 @@
         <div class="pb-5 pl-2"><%= @category.name%></div>
         <%= link_to 'Edit', edit_category_path(@category), class:"btn btn-info p3" %> 
       </div>
+      <div><%= link_to 'View Tasks Today', category_tasks_path(@task.category), class: "btn btn-success ml-3" %></div>
     
   <div>
       <%= form_with(model: [@task.category, @task]) do |f| %>
@@ -35,6 +36,10 @@
             <%= f.label :status, "Status:", class:"mr-14" %>
             <%= f.select :status, Task::STATUS_OPTIONS, {}, class:"w-32 h-9 form-control" %>
           </div>
+          <div>
+            <%= f.label :date, "Due Date:", class:"mr-8"  %>
+            <%= f.date_field :date %>
+          </div>
           
           <div class="flex justify-center pt-4">
             <%= f.submit class: "btn btn-success" %>
@@ -55,7 +60,10 @@
   <div class="border-2 border-blue-100 mt-2 pt-2 pl-3">
       <div class="flex">
         <div class="p-1 text-s">
-          <span class="badge badge-<%= task.badge_color %> p-1"><%= task.status %></span>
+          <span class="badge badge-<%= task.badge_color %> p-1 mr-2"><%= task.status %></span>
+          <% if task.date? %>
+          <span class="text-sm">Due on: <%= task.date %></span>
+          <% end %>
         </div>
       </div>
       <div class="flex justify-between">
@@ -71,11 +79,7 @@
            <%= link_to 'Details', [task.category, task], class:"btn btn-secondary p-1" %>
           <%= link_to 'Edit', edit_category_task_path(task.category, task), class:"btn btn-secondary p-1" %>
           <%= link_to 'Delete', [task.category, task], method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-danger p-1" %> 
-          <%
-=begin%>
- <%= task.description %> 
-<%
-=end%>
+          
         </div>
         <div>
           
