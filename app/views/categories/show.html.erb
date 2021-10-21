@@ -5,7 +5,6 @@
 
 <div class="flex shadow-md justify-between items-end mx-32 pb-3 px-4">
     
-    
       <div class="font-bold text-2xl flex flex-col items-center">
         <div class="pb-5 pl-2"><%= @category.name%></div>
         <%= link_to 'Edit', edit_category_path(@category), class:"btn btn-info p3" %> 
@@ -58,33 +57,24 @@
   <% @category.tasks.each do |task| %>
   <% if task.persisted? %>
   <div class="border-2 border-blue-100 mt-2 pt-2 pl-3">
-      <div class="flex">
+      
         <div class="p-1 text-s">
           <span class="badge badge-<%= task.badge_color %> p-1 mr-2"><%= task.status %></span>
-          <% if task.date? %>
+          <% if task.date? && task.status != 'done' %>
           <span class="text-sm">Due on: <%= task.date %></span>
           <% end %>
         </div>
-      </div>
-      <div class="flex justify-between">
-        <div class="text-lg font-bold pb-3 pt-2"> 
+      
+      
+        <div class="text-lg font-bold pb-5 pt-2 pl-1"> 
           <%= task.name %>
-        </div>
-        <div class="mr-5">
-         
-        </div>
-      </div>
-      <div class="flex pb-3">
-        <div>
-           <%= link_to 'Details', [task.category, task], class:"btn btn-secondary p-1" %>
-          <%= link_to 'Edit', edit_category_task_path(task.category, task), class:"btn btn-secondary p-1" %>
-          <%= link_to 'Delete', [task.category, task], method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-danger p-1" %> 
-          
-        </div>
-        <div>
-          
-        </div>  
-      </div>
+        </div>   
+      
+        <div class="flex pb-3">
+           <%= link_to 'Details', [task.category, task], class:"btn btn-secondary p-1 mr-2" %>
+          <%= link_to 'Edit', edit_category_task_path(task.category, task), class:"btn btn-secondary p-1 mr-2" %>
+          <%= link_to 'Delete', [task.category, task], method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-danger p-1 mr-2" %> 
+        </div>      
    </div>   
   <% end %>
 <% end %>

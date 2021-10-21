@@ -4,6 +4,7 @@ class Category < ApplicationRecord
 
   validates :name, presence: true
   validates :description, presence: true
+  validates_uniqueness_of :name
 
   def badge_color
     case status

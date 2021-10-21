@@ -2,6 +2,7 @@ class Task < ApplicationRecord
   belongs_to :category
 
   validates :name, presence: true
+  validates_uniqueness_of :name
   
   validates :status, inclusion: { in: ['not-started', 'in-progress', 'done'] }
 
