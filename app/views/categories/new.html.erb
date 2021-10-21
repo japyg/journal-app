@@ -1,26 +1,33 @@
-
-<%= link_to 'Back', categories_path, class: "btn btn-secondary" %>
-
-
-<%= form_with(model: @category) do |form| %>
-  <% if @category.errors.any? %>
+<%
+=begin%>
+ <% if @category.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@category.errors.count, "error") %> prohibited this category from being saved:</h2>
-
+      
       <ul>
         <% @category.errors.each do |error| %>
-          <li><%= error.full_message %></li>
+          <li class="text-red-200"><%= error.full_message %></li>
         <% end %>
       </ul>
     </div>
-  <% end %>
+  <% end %> 
+<%
+=end%>
+
+
+<%= link_to 'Back', categories_path, class: "btn btn-secondary mt-4" %>
+
+
+<%= form_with(model: @category) do |form| %>
+  
 
   <div class="border-2 border-black flex flex-col p-4 rounded-lg mx-72 mt-4">
     <div class="flex justify-center font-bold text-lg pb-2">Add a new category</div>
     <div class="flex items-start pb-2">
       <%= form.label :name, "Category Name:", class:"pr-1" %>
       <%= form.text_field :name, class:"border-b-2 focus:outline-none focus:ring ml-3 w-3/5" %>
+        
     </div>
+    
     <div class="flex flex-col justify-evenly items-start pb-2">
     <%= form.label :description, "Description:" %>
     <%= form.text_area :description, class:"pr-48 focus:outline-none focus:ring border-2 border-opacity-75 h-32 w-5/6" %>
@@ -30,7 +37,7 @@
     <%= form.submit class: "btn btn-warning"%>
     </div>
   </div>
-
+<div class="flex flex-row"><%= @category.errors.full_messages_for(:name) %></div>
   
 <% end %>
 

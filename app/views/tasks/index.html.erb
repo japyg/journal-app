@@ -1,6 +1,10 @@
 
 <div class="">
-      <%= link_to 'Back', @category, class: "btn btn-secondary" %>
+   <%= link_to 'Back', @category, class: "btn btn-secondary" %>
+
+    <div class="mr-4">    
+      <%= @category.name %>
+    </div>
       
 </div>
 
@@ -15,7 +19,7 @@
         <div class="p-1 text-s">
           <span class="badge badge-<%= task.badge_color %> p-1 mr-2"><%= task.status %></span>
           <% if task.date? && task.status != 'done' %>
-          <span class="text-sm">Due on: <%= task.date %></span>
+          <span class="text-sm bg-blue-100">Due on: <%= task.date.strftime("%B %d, %Y") %></span>
           <% end %>
         </div>
         <div class="text-lg font-bold pb-3 pt-2 pl-1"> 
