@@ -2,8 +2,7 @@ class Category < ApplicationRecord
   has_many :tasks
   belongs_to :user
 
-  validates :name, presence: true
-  validates :description, presence: true
+  validates :name, presence: true, length: { maximum: 20 }
   validates_uniqueness_of :name
 
   def badge_color

@@ -1,5 +1,38 @@
-<h1>New task</h1>
+<%= form_with(model: [@task.category, @task]) do |f| %>
+  <% if @task.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@task.errors.count, "error") %> prohibited this task from being saved:</h2>
 
-<%= render 'form' %>
+      <ul>
+      <% @task.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
 
-<%= link_to 'Back', category_tasks_path(@task.category) %>
+  <div class="border-2 border-black flex flex-col p-4 rounded-lg mx-72 mt-4">
+      <div class="flex justify-center font-bold text-lg pb-2">Add New Task</div>
+      <div class="flex items-start pb-2">
+        <%= f.label :name, "Task Name:", class:"pr-1"%>
+        <%= f.text_field :name, class:"border-b-2 focus:outline-none focus:ring ml-3 w-4/6" %>
+      </div>
+      <div class="flex flex-col justify-evenly">
+        <%= f.label :description, "Task Details:" %>
+        <%= f.text_area :description, class:"p-2 focus:outline-none border-2 border-opacity-75 w-5/6 h-32" %>
+      </div>
+      <div class="flex items-center pt-4 form-group">
+        <%= f.label :status, "Status:", class: "pr-4" %>
+        <%= f.select :status, Task::STATUS_OPTIONS, {}, class:" w-32 form-control" %>
+      </div>
+
+      <div class="flex items-center pt-4 form-group">
+        <%= f.label :date, "Due Date:", class: "pr-4" %>
+        <%= f.date_field :date, class:" w-44 form-control" %>
+      </div>
+      
+      <div class="flex justify-center pt-4">
+        <%= f.submit class: "btn btn-warning" %>
+      </div>
+  </div>
+<% end %>

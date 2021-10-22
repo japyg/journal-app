@@ -26,6 +26,7 @@ class TasksController < ApplicationController
     if @task.save
       redirect_to(@task.category)
     else
+      # redirect_to(@category)
       render action: 'new'
     end
   end

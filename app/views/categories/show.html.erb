@@ -1,5 +1,5 @@
 <div class="">
-      <%= link_to 'Back', categories_path, class: "btn btn-secondary" %>
+  <%= link_to 'Back', categories_path, class: "btn btn-secondary mt-4" %>
       
 </div>
 
@@ -15,7 +15,7 @@
       <%= form_with(model: [@task.category, @task]) do |f| %>
         <% if @task.errors.any? %>
           <div id="error_explanation">
-            <h2><%= pluralize(@task.errors.count, "error") %> prohibited this task from being saved:</h2>
+            <h2><%= pluralize(@task.errors.count, "error") %></h2>
 
             <ul>
             <% @task.errors.full_messages.each do |msg| %>

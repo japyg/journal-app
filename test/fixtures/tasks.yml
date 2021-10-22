@@ -1,10 +1,11 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
+usertest:
   name: MyString
   description: MyText
-  status: MyString
-  category: one
+  status: done
+  date: 10-22-2021
+  category: School
 
 two:
   name: MyString
